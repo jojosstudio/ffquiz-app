@@ -14,7 +14,6 @@
       min-height: 100vh;
     }
 
-    /* HEADER */
     .header {
       background: #1a1d27;
       border-bottom: 1px solid #2d3148;
@@ -50,12 +49,8 @@
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    .header-subtitle {
-      font-size: 12px;
-      color: #64748b;
-    }
+    .header-subtitle { font-size: 12px; color: #64748b; }
 
-    /* BREADCRUMB */
     .breadcrumb {
       padding: 10px 16px;
       display: flex;
@@ -72,11 +67,13 @@
       color: #64748b;
       white-space: nowrap;
       cursor: pointer;
+      background: none;
+      border: none;
+      padding: 0;
     }
     .breadcrumb-item:last-child { color: #94a3b8; }
     .breadcrumb-sep { color: #334155; font-size: 12px; }
 
-    /* GRID */
     .grid {
       padding: 16px;
       display: grid;
@@ -84,7 +81,6 @@
       gap: 12px;
     }
 
-    /* FOLDER CARD */
     .card {
       background: #1a1d27;
       border: 1px solid #2d3148;
@@ -97,22 +93,36 @@
       cursor: pointer;
       transition: background 0.15s, transform 0.1s;
       -webkit-tap-highlight-color: transparent;
+      text-align: center;
     }
     .card:active { background: #22263a; transform: scale(0.97); }
     .card-icon { font-size: 32px; }
-    .card-name {
-      font-size: 12px;
-      color: #cbd5e1;
+    .card-name { font-size: 12px; color: #cbd5e1; line-height: 1.4; word-break: break-word; }
+    .card-count { font-size: 11px; color: #475569; }
+
+    .category-test-btn {
+      margin: 0 16px 16px;
+      width: calc(100% - 32px);
+      padding: 14px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(135deg, #3b82f6, #6366f1);
+      color: white;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .category-test-btn:active { transform: scale(0.98); }
+
+    .empty {
       text-align: center;
-      line-height: 1.4;
-      word-break: break-word;
-    }
-    .card-count {
-      font-size: 11px;
+      padding: 60px 20px;
       color: #475569;
+      font-size: 15px;
+      grid-column: 1 / -1;
     }
-    .card.folder .card-icon { filter: drop-shadow(0 0 6px #3b82f640); }
-    .card.question .card-icon { }
+    .empty-icon { font-size: 48px; margin-bottom: 12px; }
 
     /* QUIZ OVERLAY */
     .quiz-overlay {
@@ -133,11 +143,7 @@
       align-items: center;
       gap: 12px;
     }
-    .quiz-progress-bar {
-      height: 3px;
-      background: #2d3148;
-      position: relative;
-    }
+    .quiz-progress-bar { height: 3px; background: #2d3148; }
     .quiz-progress-fill {
       height: 100%;
       background: linear-gradient(90deg, #3b82f6, #6366f1);
@@ -160,11 +166,7 @@
       line-height: 1.5;
     }
 
-    .quiz-answers {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
+    .quiz-answers { display: flex; flex-direction: column; gap: 10px; }
 
     .answer-btn {
       background: #1a1d27;
@@ -180,23 +182,13 @@
       display: flex;
       align-items: center;
       gap: 12px;
+      width: 100%;
     }
     .answer-btn:active { transform: scale(0.98); }
-    .answer-btn.selected {
-      border-color: #3b82f6;
-      background: #1e3a5f;
-      color: #93c5fd;
-    }
-    .answer-btn.correct {
-      border-color: #22c55e;
-      background: #14532d;
-      color: #86efac;
-    }
-    .answer-btn.wrong {
-      border-color: #ef4444;
-      background: #450a0a;
-      color: #fca5a5;
-    }
+    .answer-btn.selected { border-color: #3b82f6; background: #1e3a5f; color: #93c5fd; }
+    .answer-btn.correct { border-color: #22c55e; background: #14532d; color: #86efac; }
+    .answer-btn.wrong { border-color: #ef4444; background: #450a0a; color: #fca5a5; }
+
     .answer-letter {
       width: 28px;
       height: 28px;
@@ -214,39 +206,6 @@
     .answer-btn.correct .answer-letter { background: #22c55e; color: white; }
     .answer-btn.wrong .answer-letter { background: #ef4444; color: white; }
 
-    .quiz-footer {
-      padding: 16px;
-      background: #1a1d27;
-      border-top: 1px solid #2d3148;
-    }
-
-    .submit-btn {
-      width: 100%;
-      padding: 16px;
-      border-radius: 14px;
-      border: none;
-      font-size: 16px;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.15s;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .submit-btn.primary {
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
-      color: white;
-    }
-    .submit-btn.primary:disabled {
-      background: #2d3148;
-      color: #475569;
-      cursor: not-allowed;
-    }
-    .submit-btn.next {
-      background: #22c55e;
-      color: white;
-    }
-    .submit-btn:active:not(:disabled) { transform: scale(0.98); }
-
-    /* RESULT */
     .result-feedback {
       padding: 14px 16px;
       border-radius: 14px;
@@ -267,7 +226,28 @@
       display: block;
     }
 
-    /* FINAL RESULT */
+    .quiz-footer {
+      padding: 16px;
+      background: #1a1d27;
+      border-top: 1px solid #2d3148;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      border-radius: 14px;
+      border: none;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .submit-btn.primary { background: linear-gradient(135deg, #3b82f6, #6366f1); color: white; }
+    .submit-btn.primary:disabled { background: #2d3148; color: #475569; cursor: not-allowed; }
+    .submit-btn.next { background: #22c55e; color: white; }
+    .submit-btn:active:not(:disabled) { transform: scale(0.98); }
+
     .final-result {
       display: flex;
       flex-direction: column;
@@ -286,43 +266,11 @@
     }
     .result-label { font-size: 16px; color: #64748b; }
     .result-details { font-size: 14px; color: #475569; }
-
-    /* KATEGORIE TEST BTN */
-    .category-test-btn {
-      margin: 0 16px 16px;
-      width: calc(100% - 32px);
-      padding: 14px;
-      border-radius: 14px;
-      border: none;
-      background: linear-gradient(135deg, #3b82f6, #6366f1);
-      color: white;
-      font-size: 15px;
-      font-weight: 600;
-      cursor: pointer;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .category-test-btn:active { transform: scale(0.98); }
-
-    .empty {
-      text-align: center;
-      padding: 60px 20px;
-      color: #475569;
-      font-size: 15px;
-    }
-    .empty-icon { font-size: 48px; margin-bottom: 12px; }
-
-    .loading {
-      text-align: center;
-      padding: 60px 20px;
-      color: #475569;
-      font-size: 15px;
-    }
   </style>
 </head>
 <body>
 
 <div id="app">
-  <!-- HEADER -->
   <div class="header">
     <button class="back-btn" id="backBtn" onclick="goBack()" style="display:none">‹</button>
     <div>
@@ -331,72 +279,60 @@
     </div>
   </div>
 
-  <!-- BREADCRUMB -->
-  <div class="breadcrumb" id="breadcrumb">
-    <span class="breadcrumb-item" onclick="navigateTo(null)">🏠 Start</span>
-  </div>
+  <div class="breadcrumb" id="breadcrumb"></div>
 
-  <!-- KATEGORIE TEST -->
   <button class="category-test-btn" id="categoryTestBtn" style="display:none" onclick="startCategoryTest()">
     📝 Alle Fragen dieser Kategorie testen
   </button>
 
-  <!-- GRID -->
   <div class="grid" id="grid">
-    <div class="loading">⏳ Lade Fragen...</div>
+    <div class="empty"><div class="empty-icon">⏳</div>Lade Fragen...</div>
   </div>
 </div>
 
-<!-- QUIZ OVERLAY -->
+<!-- QUIZ -->
 <div class="quiz-overlay" id="quizOverlay">
   <div class="quiz-header">
     <button class="back-btn" onclick="closeQuiz()">✕</button>
     <div style="flex:1">
       <div class="header-title" id="quizTitle">Quiz</div>
-      <div class="header-subtitle" id="quizProgress">Frage 1 von 1</div>
+      <div class="header-subtitle" id="quizProgress"></div>
     </div>
   </div>
   <div class="quiz-progress-bar">
     <div class="quiz-progress-fill" id="progressFill" style="width:0%"></div>
   </div>
-  <div class="quiz-body" id="quizBody">
-    <div class="quiz-question" id="quizQuestion"></div>
-    <div class="quiz-answers" id="quizAnswers"></div>
-    <div class="result-feedback" id="resultFeedback"></div>
-  </div>
+  <div class="quiz-body" id="quizBody"></div>
   <div class="quiz-footer">
-    <button class="submit-btn primary" id="submitBtn" onclick="submitAnswer()" disabled>Antwort prüfen</button>
+    <button class="submit-btn primary" id="submitBtn" disabled>Antwort prüfen</button>
   </div>
 </div>
 
 <script>
-  let data = null
+  let data = []
   let currentPath = []
-  let currentItems = []
   let quizQuestions = []
   let quizIndex = 0
   let selectedAnswers = []
   let answered = false
   let score = 0
 
-  // Lade index.json
+  // Alle Fragen flat gespeichert für Index-Zugriff
+  let flatQuestions = []
+
   async function init() {
     try {
       const res = await fetch('data/index.json')
-      if (!res.ok) throw new Error('index.json nicht gefunden')
+      if (!res.ok) throw new Error()
       data = await res.json()
       render()
     } catch (e) {
-      document.getElementById('grid').innerHTML = `
-        <div class="empty" style="grid-column:1/-1">
-          <div class="empty-icon">⚠️</div>
-          <div>index.json nicht gefunden.<br>Bitte zuerst das Generate-Script ausführen.</div>
-        </div>`
+      document.getElementById('grid').innerHTML =
+        '<div class="empty"><div class="empty-icon">⚠️</div>index.json nicht gefunden.<br>Bitte generate-index.js ausführen.</div>'
     }
   }
 
   function getCurrentItems() {
-    if (currentPath.length === 0) return data
     let current = data
     for (const segment of currentPath) {
       const folder = current.find(i => i.name === segment && i.type === 'folder')
@@ -425,23 +361,25 @@
   }
 
   function render() {
-    currentItems = getCurrentItems()
-    const folders = currentItems.filter(i => i.type === 'folder')
-    const questions = currentItems.filter(i => i.type === 'question')
-    const totalQ = countQuestions(currentItems)
+    const items = getCurrentItems()
+    const folders = items.filter(i => i.type === 'folder')
+    const questions = items.filter(i => i.type === 'question')
+    const totalQ = countQuestions(items)
+
+    // Fragen für Index speichern
+    flatQuestions = questions
 
     // Header
     const title = currentPath.length > 0 ? currentPath[currentPath.length - 1] : 'FF Fragen'
     document.getElementById('headerTitle').textContent = title
-    document.getElementById('headerSubtitle').textContent =
-      `${folders.length} Ordner · ${totalQ} Fragen`
+    document.getElementById('headerSubtitle').textContent = `${folders.length} Ordner · ${totalQ} Fragen`
     document.getElementById('backBtn').style.display = currentPath.length > 0 ? 'flex' : 'none'
 
     // Breadcrumb
-    let bc = `<span class="breadcrumb-item" onclick="navigateTo(null)">🏠 Start</span>`
+    let bc = `<button class="breadcrumb-item" onclick="navigateTo(-1)">🏠 Start</button>`
     currentPath.forEach((seg, i) => {
       bc += `<span class="breadcrumb-sep">›</span>`
-      bc += `<span class="breadcrumb-item" onclick="navigateTo(${i})">${seg}</span>`
+      bc += `<button class="breadcrumb-item" onclick="navigateTo(${i})">${seg}</button>`
     })
     document.getElementById('breadcrumb').innerHTML = bc
 
@@ -451,29 +389,30 @@
 
     // Grid
     const grid = document.getElementById('grid')
-    if (currentItems.length === 0) {
-      grid.innerHTML = `<div class="empty" style="grid-column:1/-1"><div class="empty-icon">📂</div><div>Leer</div></div>`
+    if (items.length === 0) {
+      grid.innerHTML = '<div class="empty"><div class="empty-icon">📂</div>Leer</div>'
       return
     }
 
     let html = ''
-    // Ordner zuerst
-    for (const item of folders) {
+    folders.forEach(item => {
       const q = countQuestions(item.children || [])
-      html += `<div class="card folder" onclick="openFolder('${item.name.replace(/'/g, "\\'")}')">
+      const safeName = item.name.replace(/'/g, "\\'")
+      html += `<div class="card" onclick="openFolder('${safeName}')">
         <div class="card-icon">📁</div>
         <div class="card-name">${item.name}</div>
         <div class="card-count">${q} Fragen</div>
       </div>`
-    }
-    // Dann Fragen
-    for (const item of questions) {
-      html += `<div class="card question" onclick="startSingleQuiz(${JSON.stringify(JSON.stringify(item))})">
+    })
+
+    questions.forEach((item, idx) => {
+      html += `<div class="card" onclick="startSingleQuiz(${idx})">
         <div class="card-icon">❓</div>
         <div class="card-name">${item.text}</div>
         <div class="card-count">${item.answers?.length || 0} Antworten</div>
       </div>`
-    }
+    })
+
     grid.innerHTML = html
   }
 
@@ -484,7 +423,7 @@
   }
 
   function navigateTo(index) {
-    if (index === null) {
+    if (index === -1) {
       currentPath = []
     } else {
       currentPath = currentPath.slice(0, index + 1)
@@ -500,15 +439,15 @@
   }
 
   function startCategoryTest() {
-    const questions = getAllQuestions(currentItems)
-    // Mischen
-    const shuffled = questions.sort(() => Math.random() - 0.5)
+    const all = getAllQuestions(getCurrentItems())
+    const shuffled = [...all].sort(() => Math.random() - 0.5)
     startQuiz(shuffled, currentPath[currentPath.length - 1] || 'Quiz')
   }
 
-  function startSingleQuiz(itemJson) {
-    const item = JSON.parse(itemJson)
-    startQuiz([item], item.text)
+  function startSingleQuiz(idx) {
+    const q = flatQuestions[idx]
+    if (!q) return
+    startQuiz([q], q.text)
   }
 
   function startQuiz(questions, title) {
@@ -534,35 +473,33 @@
       `Frage ${quizIndex + 1} von ${quizQuestions.length}`
     document.getElementById('progressFill').style.width =
       `${(quizIndex / quizQuestions.length) * 100}%`
-    document.getElementById('quizQuestion').textContent = q.text
-    document.getElementById('resultFeedback').className = 'result-feedback'
-    document.getElementById('resultFeedback').textContent = ''
-
-    const submitBtn = document.getElementById('submitBtn')
-    submitBtn.className = 'submit-btn primary'
-    submitBtn.textContent = 'Antwort prüfen'
-    submitBtn.disabled = true
-    submitBtn.onclick = submitAnswer
 
     const letters = ['A', 'B', 'C', 'D']
-    let answersHtml = ''
-    const answers = q.answers || []
-    answers.forEach((answer, idx) => {
-      answersHtml += `
-        <button class="answer-btn" id="answer-${idx}" onclick="selectAnswer(${idx})">
-          <span class="answer-letter">${letters[idx]}</span>
-          <span>${answer}</span>
-        </button>`
-    })
-    document.getElementById('quizAnswers').innerHTML = answersHtml
+    let answersHtml = (q.answers || []).map((answer, idx) =>
+      `<button class="answer-btn" id="ans-${idx}" onclick="selectAnswer(${idx})">
+        <span class="answer-letter">${letters[idx]}</span>
+        <span>${answer}</span>
+      </button>`
+    ).join('')
 
-    // Scroll to top
+    document.getElementById('quizBody').innerHTML = `
+      <div class="quiz-question">${q.text}</div>
+      <div class="quiz-answers">${answersHtml}</div>
+      <div class="result-feedback" id="resultFeedback"></div>
+    `
+
+    const btn = document.getElementById('submitBtn')
+    btn.className = 'submit-btn primary'
+    btn.textContent = 'Antwort prüfen'
+    btn.disabled = true
+    btn.onclick = submitAnswer
+
     document.getElementById('quizBody').scrollTo(0, 0)
   }
 
   function selectAnswer(idx) {
     if (answered) return
-    const btn = document.getElementById(`answer-${idx}`)
+    const btn = document.getElementById(`ans-${idx}`)
     if (selectedAnswers.includes(idx)) {
       selectedAnswers = selectedAnswers.filter(i => i !== idx)
       btn.classList.remove('selected')
@@ -579,80 +516,67 @@
 
     const q = quizQuestions[quizIndex]
     const correct = q.correctAnswers || []
-
     const isCorrect = correct.length === selectedAnswers.length &&
       correct.every(c => selectedAnswers.includes(c))
 
     if (isCorrect) score++
 
-    // Antworten einfärben
-    const answers = q.answers || []
-    answers.forEach((_, idx) => {
-      const btn = document.getElementById(`answer-${idx}`)
+    ;(q.answers || []).forEach((_, idx) => {
+      const btn = document.getElementById(`ans-${idx}`)
       if (!btn) return
       btn.classList.remove('selected')
-      if (correct.includes(idx)) {
-        btn.classList.add('correct')
-      } else if (selectedAnswers.includes(idx)) {
-        btn.classList.add('wrong')
-      }
+      if (correct.includes(idx)) btn.classList.add('correct')
+      else if (selectedAnswers.includes(idx)) btn.classList.add('wrong')
     })
 
-    // Feedback
     const feedback = document.getElementById('resultFeedback')
     if (isCorrect) {
       feedback.className = 'result-feedback correct'
       feedback.textContent = '✓ Richtig!'
     } else {
-      const correctText = correct.map(i => answers[i]).join(', ')
+      const correctText = correct.map(i => (q.answers || [])[i]).join(', ')
       feedback.className = 'result-feedback wrong'
       feedback.textContent = `✗ Falsch — Richtig: ${correctText}`
     }
 
-    // Button zu "Weiter"
-    const submitBtn = document.getElementById('submitBtn')
+    const btn = document.getElementById('submitBtn')
+    btn.disabled = false
     if (quizIndex + 1 < quizQuestions.length) {
-      submitBtn.className = 'submit-btn next'
-      submitBtn.textContent = 'Nächste Frage →'
-      submitBtn.disabled = false
-      submitBtn.onclick = () => { quizIndex++; showQuestion() }
+      btn.className = 'submit-btn next'
+      btn.textContent = 'Nächste Frage →'
+      btn.onclick = () => { quizIndex++; showQuestion() }
     } else {
-      submitBtn.className = 'submit-btn next'
-      submitBtn.textContent = 'Ergebnis anzeigen'
-      submitBtn.disabled = false
-      submitBtn.onclick = showFinalResult
+      btn.className = 'submit-btn next'
+      btn.textContent = 'Ergebnis anzeigen'
+      btn.onclick = showFinalResult
     }
   }
 
   function showFinalResult() {
     const total = quizQuestions.length
     const pct = Math.round((score / total) * 100)
-    let emoji = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : pct >= 40 ? '😅' : '💪'
+    const emoji = pct >= 80 ? '🏆' : pct >= 60 ? '👍' : pct >= 40 ? '😅' : '💪'
+    const text = pct >= 80 ? 'Sehr gut!' : pct >= 60 ? 'Gut gemacht!' : pct >= 40 ? 'Weiter üben!' : 'Nicht aufgeben!'
 
     document.getElementById('progressFill').style.width = '100%'
     document.getElementById('quizProgress').textContent = 'Fertig!'
-
     document.getElementById('quizBody').innerHTML = `
       <div class="final-result">
         <div class="result-emoji">${emoji}</div>
         <div class="result-score">${pct}%</div>
         <div class="result-label">${score} von ${total} richtig</div>
-        <div class="result-details">${pct >= 80 ? 'Sehr gut!' : pct >= 60 ? 'Gut gemacht!' : pct >= 40 ? 'Weiter üben!' : 'Nicht aufgeben!'}</div>
+        <div class="result-details">${text}</div>
       </div>`
 
-    const submitBtn = document.getElementById('submitBtn')
-    submitBtn.className = 'submit-btn primary'
-    submitBtn.textContent = 'Schließen'
-    submitBtn.disabled = false
-    submitBtn.onclick = closeQuiz
+    const btn = document.getElementById('submitBtn')
+    btn.className = 'submit-btn primary'
+    btn.textContent = 'Schließen'
+    btn.disabled = false
+    btn.onclick = closeQuiz
   }
 
   function closeQuiz() {
     document.getElementById('quizOverlay').classList.remove('active')
-    document.getElementById('quizBody').innerHTML = `
-      <div class="quiz-question" id="quizQuestion"></div>
-      <div class="quiz-answers" id="quizAnswers"></div>
-      <div class="result-feedback" id="resultFeedback"></div>`
   }
 
   init()
